@@ -14,4 +14,4 @@ run: all
 	./debug
 
 clean:
-	rm -rf ./debug
+	rm -rf ./debug ./build/*
