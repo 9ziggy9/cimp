@@ -15,7 +15,7 @@ typedef struct {
 Vector_i32 Vector_i32_init(size_t capacity);
 void Vector_i32_destroy(Vector_i32 *v);
 void Vector_i32_print(Vector_i32 *v);
-uint32_t Vector_i32_push(Vector_i32 *v, int32_t x);
+size_t Vector_i32_push(Vector_i32 *v, int32_t x);
 size_t Vector_i32_grow(Vector_i32 *v);
 
 #endif // VECTOR_H_

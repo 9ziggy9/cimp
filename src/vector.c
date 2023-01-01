@@ -20,16 +20,11 @@ size_t Vector_i32_grow(Vector_i32 *v) {
   return v->capacity;
 }
 
-// Return of 1 indicates a resize has occurred
-uint32_t Vector_i32_push(Vector_i32 *v, int32_t x) {
-  uint32_t RETURN_VAL = 0;
-  if ((v->len + 1) / v->capacity >= 0.7) {
-    Vector_i32_grow(v);
-    RETURN_VAL = 1;
-  }
+size_t Vector_i32_push(Vector_i32 *v, int32_t x) {
+  if ((v->len + 1) / v->capacity >= 0.7) Vector_i32_grow(v);
   v->arr[v->len] = x;
   v->len++;
-  return RETURN_VAL;
+  return v->len;
 }
 
 void Vector_i32_print(Vector_i32 *v) {
