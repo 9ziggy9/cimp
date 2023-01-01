@@ -1,11 +1,15 @@
 #include "../include/vector.h"
 
-Vector_i32 Vector_i32_init(size_t capacity) {
-  Vector_i32 v;
-  v.len = 0;
-  v.capacity = capacity;
-  v.arr = (int32_t *) malloc(sizeof(int32_t) * capacity);
-  return v;
+// PAY FUCKING ATTENTION DAVID
+// Previously this code was defined as a Vector_i32 pointer;
+// Vector_i32 v was defined, its struct slots set, then
+// reference to v return.
+// RETURNING REFERENCE TO STACK-ALLOCATED MEMORY WILL LEAD
+// TO UNDEFINED BEHAVIOR!
+void Vector_i32_init(Vector_i32 *v, size_t capacity) {
+  v->len = 0;
+  v->capacity = capacity;
+  v->arr = (int32_t *) malloc(sizeof(int32_t) * capacity);
 }
 
 void Vector_i32_destroy(Vector_i32 *v) {
